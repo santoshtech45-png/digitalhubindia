@@ -1,0 +1,6 @@
+{
+  "name": "Digital Hub India",
+  "description": "Comprehensive freelancing platform and utility hub by Santosh. Access professional online tools, PDF editors, dynamic typing tests, custom signature-photo merges, age calculators, local notes, books, and job syllabus trackers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

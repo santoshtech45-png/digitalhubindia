@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "Public and private user account preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "typing_score": {
+      "title": "Typing Test Score",
+      "description": "A record of a completed typing test by a candidate",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "wpm": { "type": "integer" },
+        "accuracy": { "type": "number" },
+        "language": { "type": "string" },
+        "mode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "wpm", "accuracy", "language", "mode", "createdAt"]
+    },
+    "resume": {
+      "title": "Sarkari Resume Content",
+      "description": "Candidate structured resume metadata",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "personalInfo": { "type": "object" },
+        "education": { "type": "array" },
+        "experience": { "type": "array" },
+        "skills": { "type": "array" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "personalInfo", "updatedAt"]
+    },
+    "inquiry": {
+      "title": "Direct Service Inquiry",
+      "description": "An inquiry sent by a candidate for custom assistance",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "service": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "clientName", "clientPhone", "createdAt"]
+    },
+    "favorite_tool": {
+      "title": "Favorite Tool",
+      "description": "A bookmarked or starred action tool for quick execution",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "toolId": { "type": "string" },
+        "toolName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "toolId", "createdAt"]
+    },
+    "tool_usage": {
+      "title": "Tool Usage Tracker",
+      "description": "Counter tracking how many times a tool has been executed by all members",
+      "type": "object",
+      "properties": {
+        "toolId": { "type": "string" },
+        "useCount": { "type": "integer" },
+        "lastUsedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["toolId", "useCount"]
+    }
+  },
+  "firestore": {
+    "tool_usage/{toolId}": {
+      "schema": "tool_usage",
+      "description": "Global usage count tracking for each action tool"
+    },
+    "users/{userId}": {
+      "schema": "user",
+      "description": "Basic user info and metadata"
+    },
+    "users/{userId}/typing_scores/{scoreId}": {
+      "schema": "typing_score",
+      "description": "Candidate typing speed evaluation records"
+    },
+    "users/{userId}/resumes/{resumeId}": {
+      "schema": "resume",
+      "description": "Candidate saved resume draft files"
+    },
+    "users/{userId}/inquiries/{inquiryId}": {
+      "schema": "inquiry",
+      "description": "Submitted server inquiry request files"
+    },
+    "users/{userId}/favorites/{favoriteId}": {
+      "schema": "favorite_tool",
+      "description": "Bookmarked favorite workspace tools"
+    }
+  }
+}

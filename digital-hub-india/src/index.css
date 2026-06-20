@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Remap indigo spectrum to dynamic fuchsia-violet brand palette */
+  --color-indigo-50: #faf5ff;
+  --color-indigo-100: #f3e8ff;
+  --color-indigo-200: #e9d5ff;
+  --color-indigo-300: #d8b4fe;
+  --color-indigo-400: #c084fc;
+  --color-indigo-500: #a855f7;
+  --color-indigo-600: #7c3aed;  /* Vibrant Violet */
+  --color-indigo-650: #6d28d9;  /* Deep Violet */
+  --color-indigo-700: #db2777;  /* Deep Fuchsia */
+  --color-indigo-800: #be185d;
+  --color-indigo-900: #4c1d95;
+  --color-indigo-950: #1e1b4b;
+}
+
+/* Core premium signature gradient utilities */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 50%, #f43f5e 100%);
+}
+
+.hover\:bg-brand-gradient-hover:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #be185d 50%, #e11d48 100%);
+}
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 50%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* AI generated futuristic colorful glow backgrounds */
+.bg-ai-cosmic {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #db2777 100%);
+}
+
+.bg-ai-oceanic {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #7c3aed 100%);
+}
+
+.bg-ai-aurora {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+}
+
+.bg-ai-sunfire {
+  background: linear-gradient(135deg, #f97316 0%, #db2777 60%, #7c3aed 100%);
+}
+
+.card-ai-glow {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.12);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-ai-glow:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.25);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+/* Global Mobile Responsiveness Compressors ("chhota aur professional layout") */
+@media (max-width: 640px) {
+  html, body {
+    font-size: 84% !important; /* Scale baseline typography down */
+  }
+  
+  /* Compress display titles */
+  .display-title {
+    font-size: 1.45rem !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.015em !important;
+  }
+  
+  /* Shrink margins and spaces */
+  .space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.5rem !important;
+  }
+  .space-y-10 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.25rem !important;
+  }
+  .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.8rem !important;
+  }
+  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.6rem !important;
+  }
+  .space-y-5 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.45rem !important;
+  }
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.35rem !important;
+  }
+  .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.25rem !important;
+  }
+  .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0.35rem !important;
+  }
+  .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0.25rem !important;
+  }
+  
+  /* Downscale padding blocks globally to keep layout ultra-dense and professional */
+  .p-12 {
+    padding: 1.25rem !important;
+  }
+  .p-10 {
+    padding: 1rem !important;
+  }
+  .p-8 {
+    padding: 0.85rem !important;
+  }
+  .p-6 {
+    padding: 0.65rem !important;
+  }
+  .p-5 {
+    padding: 0.5rem !important;
+  }
+  .p-4 {
+    padding: 0.4rem !important;
+  }
+  .px-8 {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+  .px-6 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .px-4 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .py-12 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .py-10 {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+  .py-8 {
+    padding-top: 0.95rem !important;
+    padding-bottom: 0.95rem !important;
+  }
+  .py-6 {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+  }
+  .py-4 {
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+  }
+  .pt-8 {
+    padding-top: 0.95rem !important;
+  }
+  .pb-8 {
+    padding-bottom: 0.95rem !important;
+  }
+  
+  /* Simplify grid gaps */
+  .gap-12 {
+    gap: 1.25rem !important;
+  }
+  .gap-8 {
+    gap: 0.65rem !important;
+  }
+  .gap-6 {
+    gap: 0.45rem !important;
+  }
+  .gap-4 {
+    gap: 0.3rem !important;
+  }
+  .gap-3 {
+    gap: 0.25rem !important;
+  }
+  
+  /* Buttons should fit mobile touch cleanly but occupy less spatial height */
+  button, .btn {
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 0.65rem !important;
+  }
+  
+  /* Shrink text fields */
+  input, select, textarea {
+    padding: 0.45rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 0.4rem !important;
+  }
+  
+  /* Refine exact text hierarchies for crisp small displays */
+  .text-5xl {
+    font-size: 1.85rem !important;
+    line-height: 1.15 !important;
+  }
+  .text-4xl {
+    font-size: 1.6rem !important;
+    line-height: 1.18 !important;
+  }
+  .text-3xl {
+    font-size: 1.35rem !important;
+    line-height: 1.2 !important;
+  }
+  .text-2xl {
+    font-size: 1.15rem !important;
+    line-height: 1.22 !important;
+  }
+  .text-xl {
+    font-size: 1.0rem !important;
+    line-height: 1.25 !important;
+  }
+  .text-lg {
+    font-size: 0.88rem !important;
+    line-height: 1.3 !important;
+  }
+  .text-base {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+  .text-sm {
+    font-size: 0.72rem !important;
+    line-height: 1.4 !important;
+  }
+  .text-xs {
+    font-size: 0.64rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Reduce Icon Sizes on Mobile dynamically */
+  svg.lucide, .lucide, [class*="lucide-"] {
+    width: 0.9rem !important;
+    height: 0.9rem !important;
+  }
+  svg.lucide.w-4, svg.lucide.h-4 {
+    width: 0.85rem !important;
+    height: 0.85rem !important;
+  }
+  svg.lucide.w-3, svg.lucide.h-3 {
+    width: 0.7rem !important;
+    height: 0.7rem !important;
+  }
+  svg.lucide.w-5, svg.lucide.h-5 {
+    width: 1.05rem !important;
+    height: 1.05rem !important;
+  }
+  svg.lucide.w-6, svg.lucide.h-6 {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+  svg.lucide.w-8, svg.lucide.h-8 {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+  svg.lucide.w-10, svg.lucide.h-10 {
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+  }
+  svg.lucide.w-12, svg.lucide.h-12 {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+  }
+  
+  /* Hide excessive decorative components on mobile to keep views crisp */
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+/* Custom styling presets */
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+}
+
+/* Web-kit print optimization styles for Resume */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
