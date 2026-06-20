@@ -1,0 +1,105 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default safety deny net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // Auth & Identity helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'admin@sarkarihub.com' ||
+        request.auth.token.email == 'admin.boss@sarkarihub.com' ||
+        request.auth.token.email == 'santoshtech45@gmail.com' ||
+        (request.auth.token.email.toLowerCase().startsWith('admin') && request.auth.token.email.toLowerCase().endsWith('@sarkarihub.com'))
+      );
+    }
+    
+    // 1. Class notes rules
+    match /class_notes/{noteId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // 2. Products rules
+    match /products/{prodId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // 3. Admin settings rules
+    match /admin_settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // 4. Inquiries all rules (student feedback forms)
+    match /inquiries_all/{inqId} {
+      allow read: if isAdmin();
+      allow create: if true; // anyone can send inquiry
+      allow delete, update: if isAdmin();
+    }
+    
+    // 5. Subscriptions dynamic ledger rules
+    match /subscriptions_all/{subId} {
+      allow read, create: if isSignedIn(); // For users to read & submit their subs
+      allow update, delete: if isAdmin();
+    }
+    
+    // 6. User profile subcollections
+    match /users/{userId} {
+      allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      
+      match /typing_scores/{scoreId} {
+        allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      }
+      
+      match /resumes/{resumeId} {
+        allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      }
+      
+      match /inquiries/{inquiryId} {
+        allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      }
+
+      match /favorites/{favoriteId} {
+        allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      }
+    }
+
+    // 7. Dynamic Membership Plans rules
+    match /membership_plans/{planId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 8. Ebooks rules
+    match /ebooks/{ebookId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 9. Services rules
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 10. Blogs rules
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 11. Tool Usage Tracking rules
+    match /tool_usage/{toolId} {
+      allow read, write: if true;
+    }
+  }
+}
